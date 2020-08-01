@@ -10,11 +10,15 @@
     height: 200px;
 }
 
+.card-dashboard .card-body i {
+    font-size: 20px;
+    color: #352961;
+}
+
 .btn {
     background-color: #352961;
     color: white;
 }
-
 
 .btn:hover {
     background-color: #352961;
