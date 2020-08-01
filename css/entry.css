@@ -1,0 +1,53 @@
+.navbar {
+  background-color: #352961 !important;
+  height: 64px;
+}
+
+li a:hover {
+  border-bottom: 1px solid white;
+}
+
+/* headings */
+h1 {
+  color: #352961;
+
+  font-family: "Open Sans", sans-serif;
+}
+
+p {
+  color: #848484;
+  font-size: 20px;
+  line-height: 1.5em;
+  width: 70%;
+  text-align: justify;
+}
+
+/* input fields  */
+#fileID,
+#personName,
+#address,
+#category,
+#delivery {
+  height: 50px;
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+/* button -login */
+.btn-purple {
+  width: 70%;
+  background-color: #352961 !important;
+  color: white;
+  font-weight: 600;
+
+  text-align: center;
+}
+
+
+/*Govt. of Sikkim logo*/
+.logo {
+  height: 25px;
+  width: 25px;
+  float: left;
+  padding-right: 5px;
+}

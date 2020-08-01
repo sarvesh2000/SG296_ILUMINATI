@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <!--Parse SDK-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/parse/2.9.1/parse.js"></script>
+  <!--Parse Init-->
+  <script src="js/parseInit.js"></script>
+  <!--Login Check Script-->
+  <!-- <script src="js/loginCheck.js"></script> -->
+  <script>
+    var currentUser = Parse.User.current();
+    if (currentUser) {
+      var userType = currentUser.get("officerClass");
+      if (userType != "entry" && userType == "1") {
+        console.log(userType);
+      } else {
+        alert("You are not authorised to access this page");
+        Parse.User.logOut();
+        document.location.href = "login.html";
+      }
+    } else {
+      alert("You are not logged in. Please Login to access");
+      document.location.href = "login.html";
+    }
+  </script>
+  <!-- Search Script -->
+  <script src="js/searchFile.js"></script>
+
+  <!--Logout Script-->
+  <script src="js/logout.js"></script>
+
+  <title>table</title>
+  <script>
+
+  </script>
+</head>
+<style>
+  .form-container {
+    margin-top: 50px;
+  }
+
+  .form-container .search-input {
+    width: 80%;
+  }
+
+  /*Govt. of Sikkim logo*/
+  .logo {
+    height: 25px;
+    width: 25px;
+    float: left;
+    padding-right: 5px;
+  }
+
+  th {
+    background-color: #36304A;
+    color: white;
+  }
+
+  .container-table100 {
+    width: 100%;
+    min-height: 100vh;
+    background: #c850c0;
+    background: linear-gradient(45deg, #4158d0, #c850c0);
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 33px 30px;
+  }
+
+  td {
+    background-color: white;
+    /* color: gray; */
+  }
+
+  .table {
+    border: 1px solid lightgray;
+  }
+</style>
+
+<body>
+  <!--navbar-->
+  <nav class="navbar navbar-expand-lg navbar-light" style="background: #352961;">
+    <a class="navbar-brand text-white" href="dashboard.html"><i><img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Seal_of_Sikkim.svg/1200px-Seal_of_Sikkim.svg.png"
+          alt="Government of Sikkim Logo" class="logo"></i> Govt. of Sikkim</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link text-white" href="dashboard.html">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link text-white" href="table.html">Reassign Jobs <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="existing_jobs.html">Existing Jobs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="newjobs.html">Assigned Jobs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="jobs_history.html">All Jobs</a>
+        </li>
+      </ul>
+      <div class="my-2 my-lg-0">
+        <button type="button" class="btn btn-lg btn-primary" onclick="logout()">
+          Logout
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-table100">
+    <div class="container">
+      <div class="form-container form-inline">
+
+        <input class="form-control mr-sm-2 search-input" type="search" placeholder="Search" aria-label="Search"
+          id="search">
+        <button class="btn btn-primary my-2 my-sm-0 search-btn" id="search_button" onclick="search()">Search</button>
+
+      </div>
+      <div class="table-container mt-5 d-none">
+        <table class="table table-striped" border="1">
+          <thead>
+            <tr>
+              <th>File no</th>
+              <th>Assigned to officer ID</th>
+              <th>Action</th>
+              <th>Timestamp</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="search_results">
+            <!-- <tr>
+                        <td>1</td>
+                        <td>123</td>
+                        <td>madhu</td>
+                        <td></td>
+                        <td></td>
+                        <td><button type="button" class="btn btn-success">Submit</button></td>
+                    </tr> -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+  <script>
+    $(".search-btn").click(function () {
+      if ($(".table-container").hasClass("d-none")) {
+        $(".table-container").removeClass('d-none')
+        $(".table-container").addClass('d-block')
+      }
+    });
+  </script>
+</body>
+
+</html>

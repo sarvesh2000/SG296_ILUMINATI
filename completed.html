@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="js/instascan.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <!--Parse SDK-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parse/2.9.1/parse.js"></script>
+    <!--Parse Init-->
+    <script src="js/parseInit.js"></script>
+    <!--Login Check Script-->
+    <script src="js/loginCheck.js"></script>
+    <!--Logout Script-->
+    <script src="js/logout.js"></script>
+    <!--Submit File-->
+    <script src="js/submitFile.js"></script>
+    <title>Submit Job</title>
+  </head>
+  <body>
+    <video id="preview"></video><br />
+    <span id="FileID"></span><br />
+    <script type="text/javascript">
+      var FileID = document.getElementById("FileID");
+      document.addEventListener("DOMContentLoaded", event => {
+        let scanner = new Instascan.Scanner({
+          video: document.getElementById("preview")
+        });
+        Instascan.Camera.getCameras()
+          .then(cameras => {
+            scanner.camera = cameras[cameras.length - 1];
+            scanner.start();
+          })
+          .catch(e => console.error(e));
+
+        scanner.addListener("scan", content => {
+          console.log(content);
+          FileID.innerHTML = content;
+        });
+      });
+    </script>
+    <button class="btn btn-primary" onclick="submitFile()">
+      Mark File as completed
+    </button>
+  </body>
+</html>

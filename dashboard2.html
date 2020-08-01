@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>DashBoard 2</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <!--Parse SDK-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parse/2.9.1/parse.js"></script>
+    <!--Parse Init-->
+    <script src="js/parseInit.js"></script>
+    <!--Login Check Script-->
+    <!-- <script src="js/loginCheck.js"></script> -->
+    <script>
+      var currentUser= Parse.User.current();
+      if(currentUser){
+        var userType= currentUser.get("officerClass");
+        if(userType!="entry" && userType == "1"){
+          console.log(userType);
+        }else{
+          alert("You are not authorised to access this page");
+          Parse.User.logOut();
+          document.location.href="login.html";
+        }
+      }else{
+        alert("You are not logged in. Please Login to access");
+        document.location.href="login.html";
+      }
+    </script>
+    <!--Logout Script-->
+    <script src="js/logout.js"></script>
+    <!--Check count of jobs-->
+    <script src="js/dashboard.js"></script>
+    <!--Reassign jobs for higer officers-->
+    <!-- <script src="js/reassign.js"></script> -->
+    
+    <script>
+        countNewlyAssignedJobs();
+        countExistingJobs();
+        countCompletedJobs();
+        async function result(){
+        //const params =  { date: searchDate };
+        //const params = { status: "pending" };
+        const ratings = await Parse.Cloud.run("reassign");
+        console.log("Resutl from Cloud ",ratings);
+        //console.log(typeof ratings);
+        const reassign = await Parse.Cloud.run("reassignJobs");
+        console.log("Resutl from Cloud ", reassign);
+        }
+        result();
+      </script>
+
+<style>
+    .navbar {
+      color: white !important;
+    }
+    .card-header,
+    .btn {
+      background-color: #352961;
+      color: white;
+    }
+        /*Govt. of Sikkim logo*/
+      .logo{
+        height: 25px;
+        width: 25px;
+        float: left;
+        padding-right: 5px;
+      }
+
+      .btn-primary{
+        background-color: #0275d8;
+      }
+  </style>
+</head>
+
+<body>
+    <!--navbar-->
+    <nav
+      class="navbar navbar-expand-lg navbar-light"
+      style="background: #352961;"
+    >
+      <a class="navbar-brand text-white" href="dashboard.html"
+        ><i><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Seal_of_Sikkim.svg/1200px-Seal_of_Sikkim.svg.png" alt="Government of Sikkim Logo" class="logo"></i> Govt. of Sikkim</a
+      >
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link text-white" href="table.html">Reassign Jobs <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+    </div>
+      
+        <div class="my-2 my-lg-0">
+          <button
+            type="button"
+            class="btn btn-lg btn-primary"
+            onclick="logout()"
+          >
+          Logout
+        </button>
+      </div>
+    </nav>
+  <!--dashboard-->
+  <div class="container mt-5">
+    <div class="row" style="margin: 10% auto;">
+      <div class="col-lg-4 ">
+        <div class="card  mb-5" style="width: 18rem;">
+          <div class="card-header">TOTAL NUMBER OF WORKS EXISTING</div>
+          <div class="card-body">
+            <h5 class="card-title"><span id="existingTotal"></span></h5>
+
+            <a href="existing_jobs.html" class="btn ">View Existing Jobs</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card mb-5" style="width: 18rem;">
+          <div class="card-header">NEWLY ASSIGNED JOBS</div>
+          <div class="card-body">
+            <h5 class="card-title"><span id="newTotal"></span></h5>
+
+            <a href="newjobs.html" class="btn ">View Newly Assigned Jobs</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card mb-5" style="width: 18rem;">
+          <div class="card-header">TOTAL NUMBER OF WORKS COMPLETED</div>
+          <div class="card-body">
+            <h5 class="card-title">
+              <span id="completedTotal"></span>
+            </h5>
+
+            <a href="jobs_history.html" class="btn ">View History</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--JS, Popper.js, and jQuery-->
+  <script
+    src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"
+  ></script>
+</body>
+</html>
+

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Login</title>
+  <!--bootstrap cdn-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+  <!--css file-->
+  <link rel="stylesheet" href="./css/login.css" />
+  <!-- favicon -->
+  <link rel="icon" type="image/png" href="assets/Seal_of_Sikkim.svg">
+  <!--google fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:700&display=swap" rel="stylesheet" />
+  <!--Parse SDK-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/parse/2.9.1/parse.js"></script>
+  <!--Parse Init-->
+  <script src="js/parseInit.js"></script>
+
+  <!--Login Auth-->
+  <script>
+    function login() {
+      var currentUser;
+      // Pass the username and password to logIn function
+      Parse.User.logIn(
+        document.getElementById("username").value,
+        document.getElementById("password").value
+      )
+        .then(user => {
+          // Do stuff after successful login
+          if (typeof document !== "undefined") {
+            currentUser = Parse.User.current().get("officerClass");
+            console.log(currentUser);
+            if (currentUser == "entry") {
+              document.location.href = "entry.html";
+            } else if (currentUser == "1") {
+              document.location.href = "dashboard2.html";
+            } else {
+              document.location.href = "dashboard.html";
+            }
+          }
+        })
+        .catch(error => {
+          if (typeof document !== "undefined")
+            document.write(
+              `Error while logging in user: ${JSON.stringify(error)}`
+            );
+          console.error("Error while logging in user", error);
+        });
+    }
+  </script>
+</head>
+
+<body>
+  <!--navbar-->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand text-white" href="login.html"><i><img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Seal_of_Sikkim.svg/1200px-Seal_of_Sikkim.svg.png"
+          alt="Government of Sikkim Logo" class="logo"></i> Government of Sikkim</a>
+  </nav>
+  <!--login form-->
+  <section class="login">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mt-4">
+          <div class="text">
+            <h1 class="display-4 mb-3">LOGIN</h1>
+            <p>
+              Enter Registered Username and Password
+            </p>
+          </div>
+          <form style="margin: 0 auto;">
+            <div class="form-group">
+              <input type="text" class="form-control" id="username" aria-describedby="emailHelp"
+                placeholder="username" />
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" id="password" placeholder="Password" />
+            </div>
+
+            <button type="button" class="btn btn-block login-btn" onclick="login()">
+              LOGIN
+            </button>
+          </form>
+        </div>
+        <div class="col-md-6 img">
+          <img src="./assets/login.jpg" class="mt-5" />
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--JS, Popper.js, and jQuery-->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
