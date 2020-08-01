@@ -59,3 +59,12 @@ We have included the code for the notification system in a seperate repo as it i
 Repo Link: https://github.com/sarvesh2000/SIH-SMS-Bot
 
 Repo Owner: @sarvesh2000 (Sarvesh S.) Team Leader - ILUMINATI.
+
+### Email Notification system
+This module sends a notification about the job status and pending work via email. It also informs the officer of upcoming deadlines and higher priority jobs. A notification is sent once every three hours regarding the job status.
+
+We have included the code for the notification system in a seperate repo as it is deployed in cloud. Please find the repo link of that bot below. Its is a public repository and can be viewed by anyone. The repo is owned by the team leader of our team **Sarvesh S.**
+
+Repo Link: https://github.com/sarvesh2000/SIH-Email-Bot
+
+Repo Owner: @sarvesh2000 (Sarvesh S.) Team Leader - ILUMINATI.
