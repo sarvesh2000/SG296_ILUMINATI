@@ -109,13 +109,13 @@
             </label>
           </div>
           <div class="form-group">
-            <select class="form-control" id="assignmentType">
+            <select class="form-control" id="assignmentType" onchange="change()">
               <option value="automatic">Assignment Type</option>
               <option value="automatic">Automatic</option>
               <option value="manual">Manual</option>
             </select>
           </div>
-          <div class="form-group" style="display: none;">
+          <div class="form-group" style="display: none;" id="customHierarchy">
             <label for="hierarchy1">Hierarchy 1</label>
             <input type="text" name="h1" class="form-control" id="hierarchy1">
             <label for="hierarchy2">Hierarchy 2</label>

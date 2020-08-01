@@ -1,8 +1,12 @@
-$('assignemntType').on('change', function() {
+function change(){
+    console.log("Change Triggered");
     if(this.value == 'automatic'){
-        
+        if($("#customHierarchy").css('display') != 'none')
+            $("#customHierarchy").css('display','none');
+    }else{
+        $("#customHierarchy").css('display','');
     }
-  });
+}
 function generateFileNo(){
     var fullDate = new Date();
     var month = (fullDate.getMonth() +1);
@@ -108,6 +112,25 @@ function dataEntry(){
             myNewObject.set('Priority', document.getElementById("priority1").value);
         }else{
             myNewObject.set('Priority', document.getElementById("priority2").value);
+        }
+        if(document.getElementById("assignmentType").value == 'manual'){
+            myNewObject.set('AssignmentType', 'manual');
+            var list = [];
+            if($("#hierarchy1").val() != '')
+                list.push($("#hierarchy1").val());
+            if($("#hierarchy2").val() != '')
+                list.push($("#hierarchy2").val());
+            if($("#hierarchy3").val() != '')
+                list.push($("#hierarchy3").val());
+            if($("#hierarchy4").val() != '')
+                list.push($("#hierarchy4").val());
+            if($("#hierarchy5").val() != '')
+                list.push($("#hierarchy5").val());
+            myNewObject.set('CustomHierarchy', list);
+        }else{
+            myNewObject.set('AssignmentType', 'automatic');
+            var list = [];
+            myNewObject.set('CustomHierarchy', list);
         }
     //QR Code Generation
       var path=qr();
