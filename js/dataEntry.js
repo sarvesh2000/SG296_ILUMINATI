@@ -1,3 +1,8 @@
+$('assignemntType').on('change', function() {
+    if(this.value == 'automatic'){
+        
+    }
+  });
 function generateFileNo(){
     var fullDate = new Date();
     var month = (fullDate.getMonth() +1);
@@ -119,11 +124,15 @@ function dataEntry(){
           console.error('Error while creating Files: ', error);
       }
       );
+      
+      if(document.getElementById("assignmentType").value == 'automatic'){
+        if(document.getElementById("priority1").checked)
+            assign(1);
+        else
+            assign();   
+      }else{
 
-      if(document.getElementById("priority1").checked)
-        assign(1);
-      else
-        assign();
+      }
 }
 
 //function to return QR Code URL
