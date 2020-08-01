@@ -20,9 +20,9 @@
   <script src="js/dashboard.js"></script>
   <!-- Redirect Officer 1 to his dashbaord -->
   <script>
-    var userType= currentUser.get("officerClass");
-    if(userType == "1"){
-        document.location.href="dashboard2.html";
+    var userType = currentUser.get("officerClass");
+    if (userType == "1") {
+      document.location.href = "dashboard2.html";
     }
   </script>
   <!--Reassign jobs for higer officers-->
@@ -61,7 +61,7 @@
       padding-right: 5px;
     }
 
-    .btn-primary{
+    .btn-primary {
       background-color: #0275d8;
     }
   </style>
@@ -95,34 +95,32 @@
   <div class="container mt-5">
     <div class="row" style="margin: 10% auto;">
       <div class="col-lg-4 ">
-        <div class="card  mb-5" style="width: 18rem;">
-          <div class="card-header">TOTAL NUMBER OF WORKS EXISTING</div>
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
           <div class="card-body">
-            <h5 class="card-title"><span id="existingTotal"></span></h5>
-
-            <a href="existing_jobs.html" class="btn ">View Existing Jobs</a>
+            <h5 class="card-title" style="float: right;">View Existing Jobs</h5>
+            <p class="card-title" style="float: right;"><span id="existingTotal"></span>
+              <a href="existing_jobs.html" class="btn" style="float: right;">View Existing Jobs</a>
+            </p>
           </div>
         </div>
       </div>
       <div class="col-lg-4">
-        <div class="card mb-5" style="width: 18rem;">
-          <div class="card-header">NEWLY ASSIGNED JOBS</div>
+        <div class="card bg-light mb-5" style="width: 18rem;">
           <div class="card-body">
-            <h5 class="card-title"><span id="newTotal"></span></h5>
-
-            <a href="newjobs.html" class="btn ">View Newly Assigned Jobs</a>
+            <h5 class="card-title" style="float: right;">View Newly Assigned Jobs</h5>
+            <p class="card-title" style="float: right;"><span id="newTotal"></span>
+              <a href="newjobs.html" class="btn" style="float: right;">View Existing Jobs</a>
+            </p>
           </div>
         </div>
       </div>
       <div class="col-lg-4">
-        <div class="card mb-5" style="width: 18rem;">
-          <div class="card-header">TOTAL NUMBER OF WORKS COMPLETED</div>
+        <div class="card mb-5 bg-light" style="width: 18rem;">
           <div class="card-body">
-            <h5 class="card-title">
-              <span id="completedTotal"></span>
-            </h5>
-
-            <a href="jobs_history.html" class="btn ">View History</a>
+            <h5 class="card-title" style="float: right;">Total number of works completed</h5>
+            <p class="card-title" style="float: right;"><span id="completedTotal"></span>
+              <a href="jobs_history.html" class="btn" style="float: right;">View History</a>
+            </p>
           </div>
         </div>
       </div>
