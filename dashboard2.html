@@ -17,14 +17,22 @@
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <!--Parse SDK-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/parse/2.9.1/parse.js"></script>
-  <!--Parse Init-->
+  <!-- Parse Init -->
   <script src="js/parseInit.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
   <!--Login Check Script-->
-  <!-- <script src="js/loginCheck.js"></script> -->
+  <script src="js/loginCheck.js"></script>
   <script>
     var currentUser = Parse.User.current();
     if (currentUser) {
       var userType = currentUser.get("officerClass");
+      $(document).ready(function () {
+        var username = currentUser.getUsername();
+        console.log("Username ", username);
+        document.getElementById("user").innerHTML = username;
+      });
       if (userType != "entry" && userType == "1") {
         console.log(userType);
       } else {
@@ -42,7 +50,7 @@
   <!--Check count of jobs-->
   <script src="js/dashboard.js"></script>
   <!--Reassign jobs for higer officers-->
-  <!-- <script src="js/reassign.js"></script> -->
+  <script src="js/reassign.js"></script>
 
   <script>
     countNewlyAssignedJobs();
@@ -73,11 +81,16 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
+        <li class="nav-item">
           <a class="nav-link text-white" href="table.html">Reassign Jobs <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item ">
           <a class="nav-link text-white" href="user.html">Users <span class="sr-only">(current)</span></a>
+        <li class="nav-item ">
+          <a class="nav-link text-white" href="entry.html">Entry<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="prediction.html">Prediction<span class="sr-only">(current)</span></a>
         </li>
       </ul>
     </div>
@@ -93,7 +106,7 @@
     <div class="user-msg pb-5">
       <div class="text-center">
         <i class="fas fa-user"></i>
-        <h3 class="purple-txt">Welcome user</h3>
+        <h3 class="purple-txt">Welcome <span id="user"></span></h3>
         <h6 class="text-muted">View your exisiting jobs , newly assigned jobs & job history in this dashboard</h6>
       </div>
     </div>
@@ -134,9 +147,6 @@
     </div>
   </div>
   <!--JS, Popper.js, and jQuery-->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
     integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
     crossorigin="anonymous"></script>
