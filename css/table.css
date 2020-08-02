@@ -8,6 +8,14 @@ body {
     background-color: #F8F9FB;
 }
 
+.logo {
+    height: 25px;
+    width: 25px;
+    float: left;
+    padding-right: 5px;
+}
+
+
 .table-msg h3 {
     font-size: 30px;
     color: #352961;
@@ -21,4 +29,9 @@ table {
 
 table th {
     color: #352961;
+}
+
+.btn {
+    background-color: #352961 !important;
+    color: white !important;
 }
