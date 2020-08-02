@@ -15,6 +15,7 @@ This is a web application to enable smart file tracking system for easy tracking
 ### Parse Server
 Parse Server is used for the backend and for database management. The file after processing is stored into the database. All changes such as completion of jobs, reassignment of jobs, etc are updated continously in the server.  
 
+Link for the Parse server is https://parseplatform.org
 
 ### Officer Dashboard
 The officer dashboard consists of a home page where the officer can view the new, existing and completed jobs.
