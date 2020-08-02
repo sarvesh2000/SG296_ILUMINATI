@@ -16,15 +16,15 @@
 
     <title>Data Table</title>
     <style>
+        body {
+            background-color: #FEFEFE;
+        }
+
         .logo {
             height: 25px;
             width: 25px;
             float: left;
             padding-right: 5px;
-        }
-
-        .table {
-            border: 1px solid lightgray !important;
         }
     </style>
 </head>
@@ -68,7 +68,8 @@
     <div class="container">
 
 
-        <table border="1" id="myTable" class="display table table-responsive-md">
+        <table border="1" id="myTable"
+            class="display table table-responsive-md shadow-lg p-3 mb-5 bg-white rounded  table-bordered table-striped">
             <thead>
                 <tr>
                     <th>S.No</th>
