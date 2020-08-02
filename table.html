@@ -5,7 +5,10 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+  <!-- Googl fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <!-- font awesome -->
+  <link rel="stylesheet" href="./css/fontawesome.css">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -47,48 +50,8 @@
 
   </script>
 </head>
-<style>
-  .form-container {
-    margin-top: 50px;
-  }
-
-  .form-container .search-input {
-    width: 80%;
-  }
-
-  /*Govt. of Sikkim logo*/
-  .logo {
-    height: 25px;
-    width: 25px;
-    float: left;
-    padding-right: 5px;
-  }
-
-  th {
-    background-color: #36304A;
-    color: white;
-  }
-
-  .container-table100 {
-    width: 100%;
-    min-height: 100vh;
-    /* background: #c850c0;
-    background: linear-gradient(45deg, #4158d0, #c850c0); */
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding: 33px 30px;
-  }
-
-  td {
-    background-color: white;
-    color: gray;
-  }
-
-  .table {
-    border: 1px solid lightgray;
-  }
-</style>
+<!-- custom css -->
+<link rel="stylesheet" href="css/table.css">
 
 <body>
   <!--navbar-->
@@ -127,28 +90,31 @@
     </div>
   </nav>
 
-  <div class="container-table100">
-    <div class="container">
-      <div class="form-container form-inline">
+  <!-- table msg -->
+  <div class="table-msg text-left container pt-5 pb-2">
+    <h3> <i class="fas fa-undo pr-1"></i></i>Reassign Jobs</h3>
+    <p class="pt-2 text-muted">Use this table to reassign the jobs </p>
+  </div>
 
-        <input class="form-control mr-sm-2 search-input" type="search" placeholder="Search" aria-label="Search"
-          id="search">
-        <button class="btn btn-primary my-2 my-sm-0 search-btn" id="search_button" onclick="search()">Search</button>
-
-      </div>
-      <div class="table-container mt-5 d-none">
-        <table class="table table-striped" border="1">
-          <thead>
-            <tr>
-              <th>File no</th>
-              <th>Assigned to officer ID</th>
-              <th>Action</th>
-              <th>Timestamp</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody id="search_results">
-            <!-- <tr>
+  <div class="container">
+    <div class="form-container form-inline mt-1">
+      <input class="form-control mr-sm-2 search-input" type="search" placeholder="Search" aria-label="Search"
+        id="search" style="width: 80%;">
+      <button class="btn btn-primary my-2 my-sm-0 search-btn" id="search_button" onclick="search()">Search</button>
+    </div>
+    <div class="table-container mt-5 d-none">
+      <table class="table shadow p-3 mb-5 bg-white">
+        <thead>
+          <tr>
+            <th>File no</th>
+            <th>Assigned to officer ID</th>
+            <th>Action</th>
+            <th>Timestamp</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="search_results">
+          <!-- <tr>
                         <td>1</td>
                         <td>123</td>
                         <td>madhu</td>
@@ -156,9 +122,8 @@
                         <td></td>
                         <td><button type="button" class="btn btn-success">Submit</button></td>
                     </tr> -->
-          </tbody>
-        </table>
-      </div>
+        </tbody>
+      </table>
     </div>
   </div>
 
