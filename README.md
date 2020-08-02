@@ -18,7 +18,7 @@ The officer dashboard consists of a home page where the officer can view the new
 File for officer dashboard is **dashboard.html**
 
 ### Admin Dashboard
-The admin dashboard contains all the features of the officer dashboard along with admin access. Here the admin can reassign jobs to different officers as well as track any file.
+The admin dashboard contains all the features of the officer dashboard along with admin access. Here, the admin can assign as well as reassign jobs to different officers and track any file. Thereby maintaining transparency.
 
 File for admin dashboard is **dashboard2.html**
 
