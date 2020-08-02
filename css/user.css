@@ -7,6 +7,15 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
+.table {
+    color: gray;
+}
+
+.thead,
+.tbody {
+    border-bottom: 1px solid lightgray !important;
+}
+
 input:focus {
     border: 3px solid #555;
     box-shadow: grey;
@@ -21,4 +30,8 @@ input:focus {
 
 .user-card {
     height: 80vh;
+}
+
+input {
+    border: 1px solid lightgray;
 }
