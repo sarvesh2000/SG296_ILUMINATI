@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Google fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="./css/fontawesome.css">
     <!-- Bootstap css -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -16,7 +18,14 @@
 
     <title>Data Table</title>
     <style>
+        html,
         body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #F8F9FB;
             background-color: #FEFEFE;
         }
 
@@ -40,16 +49,16 @@
             border-bottom: 1px solid lightgray !important;
         }
 
-        .dataTables_wrapper {
-            border-bottom: 1px solid lightgray !important;
-            background: #FEFEFE !important;
+        .table-msg h3 {
+            font-size: 30px;
+            color: #352961;
         }
     </style>
 </head>
 
 <body>
     <!--navbar-->
-    <nav class="navbar navbar-expand-lg navbar-light mb-5" style="background: #352961;">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background: #352961;">
         <a class="navbar-brand text-white" href="dashboard.html"><i><img
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Seal_of_Sikkim.svg/1200px-Seal_of_Sikkim.svg.png"
                     alt="Government of Sikkim Logo" class="logo"></i> Govt. of Sikkim</a>
@@ -82,6 +91,12 @@
             </a>
         </div>
     </nav>
+
+    <!-- table msg -->
+    <div class="table-msg text-left container pt-5 pb-2">
+        <h3> <i class="fas fa-file-invoice pr-1"></i> Files</h3>
+        <p class="pt-2 text-muted">View this table for File Details</p>
+    </div>
     <!-- data table -->
     <div class="container">
 
