@@ -1,6 +1,18 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 .navbar {
   background-color: #352961 !important;
-  height: 64px;
+  height: 7vh;
 }
 
 /* navbar */
@@ -8,66 +20,62 @@ li a:hover {
   border-bottom: 1px solid white;
 }
 
-body {
-  background-color: #ffffff;
-}
-
-img {
-  /* width: 100%; */
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 75%;
-  height: 450px;
-}
-
-img:hover {
-  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
-  opacity: 0.8;
-  transition-duration: 0.3s;
-}
-
-/* headings */
-h1 {
-  color: #352961;
-
-  font-family: "Open Sans", sans-serif;
-}
-
-p {
-  color: #848484;
-  font-size: 20px;
-  line-height: 1.5em;
-  width: 70%;
-  text-align: justify;
-}
-
-/* input fields */
-#username,
-#password {
-  height: 50px;
-  width: 70%;
-  margin-bottom: 55px;
-}
-
-/* button -login */
-.login-btn {
-  width: 70% !important;
-  background-color: #352961 !important;
-  color: white;
-  font-weight: 600;
-  text-align: center;
-}
-
-/* login section */
-.login {
-  margin-top: 5%;
-}
-
-/*Govt. of Sikkim Logo*/
+/*Govt. of Sikkim logo*/
 .logo {
   height: 25px;
   width: 25px;
   float: left;
   padding-right: 5px;
+}
+
+
+.login-jumbotron {
+  height: 93vh !important;
+  width: 100% !important;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=841&q=80');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden !important;
+  margin-bottom: 0 !important;
+
+}
+
+@media (min-width: 768px) {
+  .login-jumbotron .login-form {
+    background-color: white;
+    padding: 30px;
+    width: 40%;
+    margin: 10% auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .login-jumbotron .login-form {
+    background-color: white;
+    padding: 30px;
+    width: 100%;
+    margin: 10% auto;
+  }
+}
+
+.login-jumbotron .login-form .text .login-text,
+.login-jumbotron .login-form .login-validation {
+  color: #352961;
+}
+
+.login-jumbotron .login-form #username,
+.login-jumbotron .login-form #password {
+  height: 40px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.login-jumbotron .login-form .login-btn {
+  width: 100% !important;
+  background-color: #352961 !important;
+  color: white;
+  font-weight: 600;
+  text-align: center;
 }

@@ -12,13 +12,18 @@ This is a web application to enable smart file tracking system for easy tracking
 * **vendor folder** contains the library files used for this project.
 
 ## Modules
+### Parse Server
+Parse Server is used for the backend and for database management. The file after processing is stored into the database. All changes such as completion of jobs, reassignment of jobs, etc are updated continously in the server.  
+
+Link for the Parse server is https://parseplatform.org
+
 ### Officer Dashboard
 The officer dashboard consists of a home page where the officer can view the new, existing and completed jobs.
 
 File for officer dashboard is **dashboard.html**
 
 ### Admin Dashboard
-The admin dashboard contains all the features of the officer dashboard along with admin access. Here the admin can reassign jobs to different officers as well as track any file.
+The admin dashboard contains all the features of the officer dashboard along with admin access. Here, the admin can assign as well as reassign jobs to different officers and track any file. Thereby maintaining transparency.
 
 File for admin dashboard is **dashboard2.html**
 
@@ -68,3 +73,12 @@ We have included the code for the notification system in a seperate repo as it i
 Repo Link: https://github.com/sarvesh2000/SIH-Email-Bot
 
 Repo Owner: @sarvesh2000 (Sarvesh S.) Team Leader - ILUMINATI.
+
+### Data Prediction 
+Data Prediction using Tensorflow is used to predict the change in workflow and increase the rate of efficiency. The document count collected from the previous years are used to predict the number of documents expected for the upcoming years.
+
+Link for Data Prediction module is: https://colab.research.google.com/drive/1Tt2HkZ4qppLTLhLvLkU4VnnbUPn0o1-g?usp=sharing
+
+
+
+
