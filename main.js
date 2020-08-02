@@ -88,8 +88,119 @@ Parse.Cloud.define("reassign", async (request) => {
             officerClass = result[0].get("officerClass");
             var index = list.indexOf(officerClass) + 1;
             console.log("Index ", index);
-            var find = list[index];
-            console.log("Find ", find);
+            if((index) == list.length){
+              const Status = Parse.Object.extend("Status");
+              const findFilesQuery = new Parse.Query(Status);
+              findFilesQuery.equalTo('objectId', results[i].id);
+              findFilesQuery.find().then((res)=>{
+                res.set('Action','end');
+                res.save().then(
+                    (save) => {
+                        if(typeof document !== 'undefined')
+                        console.log("Updated to Status", save);
+                    },
+                    (error) => {
+                        if(typeof document !== 'undefined')
+                        console.log("Not Updated to Status",error);
+                    }
+                );
+              });
+            }else{
+              var find = list[index];
+              console.log("Find ", find);
+              query3.equalTo("officerClass",find);
+              query3.find().then((users) => {
+                  console.log("Users ",users);
+                  if(users.length > 1){
+                      const assign = Math.floor((Math.random() * users.length) + 1);
+                      console.log("Assign ",assign);
+                      officerID=users[assign].id;
+                      console.log(officerID);
+                  }
+                  else{
+                      console.log("Officer ID ",officerID);
+                      officerID=users[0].id;
+                      console.log("Assign ",officerID);
+                  }
+              });
+              const Status = Parse.Object.extend("Status");
+              const findFilesQuery = new Parse.Query(Status);
+              const findFilesQuery1 = new Parse.Query(Status);
+              findFilesQuery.equalTo("Action","completed");
+              findFilesQuery.find().then((results) => {
+                  for(var i =0; i<results.length; i++){
+                      console.log("Last done by officer id ",results[i].get("AssignedTo"));
+                      if(results[i].get("AssignedTo") != officerID){
+                          //document.write(`${JSON.stringify(results)}`);
+                          var objectID = results[i].id;
+                          // //store to Tracking DB
+                          tracking.set('FileID', results[i].get("FileID"));
+                          tracking.set('AssignedTo',officerID);
+                          tracking.set('Timestamp',new Date());
+                          tracking.set('Action',"created");
+                          
+                          tracking.save().then(
+                              (result) => {
+                                  if(typeof document !=='undefined') 
+                                  //document.write(`Officers found: ${JSON.stringify(result)}`);
+                                  console.log('Success', result);
+                              },
+                              (error) => {
+                                  if(typeof document !== 'undefined')
+                                  console.error('Files not saved to Tracking', error);
+                              }
+                          );
+          
+                          //Store to Status
+                          findFilesQuery1.get(objectID).then((object) => {
+                          //document.write(`${JSON.stringify(object)}`);
+          
+                              object.set('FileID', object.get("FileID"));
+                              object.set('AssignedTo',officerID);
+                              object.set('Timestamp',new Date());
+                              object.set('Action',"created");
+                              object.save().then(
+                                  (save) => {
+                                      if(typeof document !== 'undefined')
+                                      console.log("Updated to Status", save);
+                                  },
+                                  (error) => {
+                                      if(typeof document !== 'undefined')
+                                      console.log("Not Updated to Status",error);
+                                  }
+                              );
+                          },
+                          (error) => {
+                              console.log("Error finding object ",error);
+                          });
+          
+                      }
+                  }
+              });
+            } 
+          });
+        }else{
+        officerID = results[i].get("AssignedTo");
+        query2.equalTo("objectId",officerID);
+        query2.find().then((result) => {
+          officerClass = result[0].get("officerClass");
+          var find;
+          if(parseInt(officerClass) == 5){
+            find = "4"
+          }
+          if(parseInt(officerClass) == 4){
+            find = "3"
+          }
+          if(parseInt(officerClass) == 3){
+            find = "2"
+          }
+          if(parseInt(officerClass) == 2){
+            find = "1"
+          }
+          if(parseInt(officerClass) == 1){
+            find = "0";
+          }
+          if(parseInt(find) != 0){
             query3.equalTo("officerClass",find);
             query3.find().then((users) => {
                 console.log("Users ",users);
@@ -159,94 +270,7 @@ Parse.Cloud.define("reassign", async (request) => {
                     }
                 }
             }); 
-          });
-        }else{
-        officerID = results[i].get("AssignedTo");
-        query2.equalTo("objectId",officerID);
-        query2.find().then((result) => {
-          officerClass = result[0].get("officerClass");
-          var find;
-          if(parseInt(officerClass) == 5){
-            find = "4"
           }
-          if(parseInt(officerClass) == 4){
-            find = "3"
-          }
-          if(parseInt(officerClass) == 3){
-            find = "2"
-          }
-          if(parseInt(officerClass) == 2){
-            find = "1"
-          }
-          query3.equalTo("officerClass",find);
-          query3.find().then((users) => {
-              console.log("Users ",users);
-              if(users.length > 1){
-                  const assign = Math.floor((Math.random() * users.length) + 1);
-                  console.log("Assign ",assign);
-                  officerID=users[assign].id;
-                  console.log(officerID);
-              }
-              else{
-                  console.log("Officer ID ",officerID);
-                  officerID=users[0].id;
-                  console.log("Assign ",officerID);
-              }
-          });
-          const Status = Parse.Object.extend("Status");
-          const findFilesQuery = new Parse.Query(Status);
-          const findFilesQuery1 = new Parse.Query(Status);
-          findFilesQuery.equalTo("Action","completed");
-          findFilesQuery.find().then((results) => {
-              for(var i =0; i<results.length; i++){
-                  console.log("Last done by officer id ",results[i].get("AssignedTo"));
-                  if(results[i].get("AssignedTo") != officerID){
-                      //document.write(`${JSON.stringify(results)}`);
-                      var objectID = results[i].id;
-                      // //store to Tracking DB
-                      tracking.set('FileID', results[i].get("FileID"));
-                      tracking.set('AssignedTo',officerID);
-                      tracking.set('Timestamp',new Date());
-                      tracking.set('Action',"created");
-                      
-                      tracking.save().then(
-                          (result) => {
-                              if(typeof document !=='undefined') 
-                              //document.write(`Officers found: ${JSON.stringify(result)}`);
-                              console.log('Success', result);
-                          },
-                          (error) => {
-                              if(typeof document !== 'undefined')
-                              console.error('Files not saved to Tracking', error);
-                          }
-                      );
-      
-                      //Store to Status
-                      findFilesQuery1.get(objectID).then((object) => {
-                      //document.write(`${JSON.stringify(object)}`);
-      
-                          object.set('FileID', object.get("FileID"));
-                          object.set('AssignedTo',officerID);
-                          object.set('Timestamp',new Date());
-                          object.set('Action',"created");
-                          object.save().then(
-                              (save) => {
-                                  if(typeof document !== 'undefined')
-                                  console.log("Updated to Status", save);
-                              },
-                              (error) => {
-                                  if(typeof document !== 'undefined')
-                                  console.log("Not Updated to Status",error);
-                              }
-                          );
-                      },
-                      (error) => {
-                          console.log("Error finding object ",error);
-                      });
-      
-                  }
-              }
-          }); 
         });
       }
     }
