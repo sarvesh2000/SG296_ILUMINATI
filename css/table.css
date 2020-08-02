@@ -8,7 +8,7 @@ body {
     background-color: #F8F9FB;
 }
 
-.table-msg i {
+.table-msg h3 {
     font-size: 30px;
     color: #352961;
 }
@@ -17,4 +17,8 @@ table {
     background-color: white;
     border: 1px solid lightgray;
     padding: 10px;
+}
+
+table th {
+    color: #352961;
 }
