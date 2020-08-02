@@ -1,0 +1,80 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/*Govt. of Sikkim logo*/
+.logo {
+    height: 25px;
+    width: 25px;
+    float: left;
+    padding-right: 5px;
+}
+
+.purple-txt {
+    color: #352961
+}
+
+.dashboard-container {
+    margin: 5% auto;
+}
+
+.dashboard-container .user-msg i {
+    font-size: 30px;
+    color: #352961
+}
+
+.navbar {
+    color: white !important;
+}
+
+.card-dashboard {
+    height: 220px;
+    width: 90%;
+}
+
+.card-dashboard:hover {
+    background-color: yellow;
+}
+
+.card-dashboard .card-body i {
+    font-size: 20px;
+    color: #352961;
+}
+
+.btn {
+    background-color: #352961;
+    color: white;
+    width: 100%;
+
+}
+
+.btn:hover {
+    background-color: #352961;
+    color: white;
+}
+
+
+
+/* hover float */
+.hvr-float {
+    display: inline-block;
+    vertical-align: middle;
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    transition-duration: 0.3s;
+    transition-property: transform;
+    transition-timing-function: ease-out;
+}
+
+.hvr-float:hover,
+.hvr-float:focus,
+.hvr-float:active {
+    transform: translateY(-8px);
+}
