@@ -7,6 +7,8 @@
   <script type="text/javascript" src="js/instascan.min.js"></script>
   <!-- google fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <!-- font awesome -->
+  <link rel="stylesheet" href="./css/fontawesome.css">
   <!-- bootstrap 4.4 -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
@@ -22,15 +24,62 @@
   <script src="js/submitFile.js"></script>
   <title>Submit Job</title>
   <style>
+    .video-preview{
+      text-align: center;
+      margin: 4% auto;
+    }
     body {
       font-family: 'Montserrat', sans-serif;
     }
   </style>
+  <link rel="stylesheet" href="css/table.css">
 </head>
 
 <body>
+  <!--navbar-->
+  <nav class="navbar navbar-expand-lg navbar-light" style="background: #352961;">
+    <a class="navbar-brand text-white" href="dashboard.html"><i><img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Seal_of_Sikkim.svg/1200px-Seal_of_Sikkim.svg.png"
+          alt="Government of Sikkim Logo" class="logo"></i> Govt. of Sikkim</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link text-white" href="dashboard.html">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="existing_jobs.html">Existing Jobs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="newjobs.html">Assigned Jobs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="jobs_history.html">All Jobs</a>
+        </li>
+      </ul>
+      <div class="my-2 my-lg-0">
+        <a type="button" class="btn-sm logout-btn  text-white" onclick="logout()">
+          Log out
+        </a>
+      </div>
+    </div>
+  </nav>
+  <!-- table msg -->
+  <div class="table-msg text-left container pt-5" >
+    <h3> <i class="fas fa-clipboard-check pr-2"></i>Complete job</h3>
+    <p class="pt-2 text-muted">Scan the QR Code to complete the job </p>
+  </div>
+  <div class="video-preview">
   <video id="preview"></video><br />
   <span id="FileID"></span><br />
+  <button class="btn btn-primary" onclick="startFile()">
+    Mark as completed
+  </button>
+  </div>
   <script type="text/javascript">
     var FileID = document.getElementById("FileID");
     document.addEventListener("DOMContentLoaded", event => {
@@ -50,9 +99,6 @@
       });
     });
   </script>
-  <button class="btn btn-primary" onclick="submitFile()">
-    Mark File as completed
-  </button>
 </body>
 
 </html>
