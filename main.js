@@ -87,6 +87,7 @@ Parse.Cloud.define("reassign", async (request) => {
           var objID = results[i].id;
           query2.find().then((result) => {
             officerClass = result[0].get("officerClass");
+            console.log("Custom officer Class ", officerClass);
             var index = list.indexOf(officerClass) + 1;
             console.log("Index ", index);
             if ((index) == list.length) {
