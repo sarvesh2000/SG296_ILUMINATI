@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Googl fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>Login</title>
+</head>
+<style>
+    body,
+    html {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    .navbar {
+        background-color: #352961 !important;
+        height: 64px;
+    }
+
+    /* navbar */
+    li a:hover {
+        border-bottom: 1px solid white;
+    }
+
+    /*Govt. of Sikkim logo*/
+    .logo {
+        height: 25px;
+        width: 25px;
+        float: left;
+        padding-right: 5px;
+    }
+
+
+    .login-jumbotron {
+        height: 92vh !important;
+        width: 100% !important;
+        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=841&q=80');
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        overflow: hidden !important;
+        margin-bottom: 0 !important;
+
+    }
+
+    .login-jumbotron .login-form {
+        background-color: white;
+        padding: 20px;
+        width: 40%;
+        margin: 0 auto;
+    }
+
+    .login-jumbotron .login-form .text .login-text {
+        color: #352961;
+    }
+
+    .login-jumbotron .login-form #username,
+    .login-jumbotron .login-form #password {
+        height: 40px;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .login-jumbotron .login-form .login-btn {
+        width: 100% !important;
+        background-color: #352961 !important;
+        color: white;
+        font-weight: 600;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <!--navbar-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand text-white" href="login.html"><i>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Seal_of_Sikkim.svg/1200px-Seal_of_Sikkim.svg.png"
+                    alt="Government of Sikkim Logo" class="logo"></i>
+            Government of Sikkim</a>
+    </nav>
+    <!-- login jumbotron -->
+    <div class="jumbotron jumbotron-fluid login-jumbotron">
+        <div class="container">
+            <form class="login-form">
+                <div class="text">
+                    <h5 class="display-4 mb-3 login-text">LOGIN</h1>
+                        <p class="text-muted">
+                            Enter Registered Username and Password
+                        </p>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="username" aria-describedby="emailHelp"
+                        placeholder="username" />
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="password" placeholder="Password" />
+                </div>
+
+                <button type="button" class="btn btn-block login-btn" onclick="login()">
+                    LOGIN
+                </button>
+            </form>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
