@@ -49,7 +49,8 @@ li a:hover {
   margin: 10% auto;
 }
 
-.login-jumbotron .login-form .text .login-text {
+.login-jumbotron .login-form .text .login-text,
+.login-jumbotron .login-form .login-validation {
   color: #352961;
 }
 

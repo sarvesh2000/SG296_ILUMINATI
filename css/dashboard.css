@@ -15,8 +15,17 @@ body {
     padding-right: 5px;
 }
 
+.purple-txt {
+    color: #352961
+}
+
 .dashboard-container {
-    margin: 10% auto;
+    margin: 5% auto;
+}
+
+.dashboard-container .user-msg i {
+    font-size: 30px;
+    color: #352961
 }
 
 .navbar {

@@ -47,9 +47,10 @@
         })
         .catch(error => {
           if (typeof document !== "undefined")
-            alert(
-              `Error while logging in user: ${JSON.stringify(error)}`
-            );
+            // alert(
+            //   `Error while logging in user: ${JSON.stringify(error)}`
+            // );
+            $('.login-validation').removeClass('d-none')
           console.error("Error while logging in user", error);
         });
     }
@@ -79,6 +80,7 @@
         <div class="form-group">
           <input type="password" class="form-control" id="password" placeholder="Password" />
         </div>
+        <p class="login-validation d-none">Incorrect Login Credentials</p>
 
         <button type="button" class="btn btn-block login-btn" onclick="login()">
           LOGIN
