@@ -11,6 +11,10 @@ body {
     color: gray;
 }
 
+.navbar {
+    width: 100%;
+}
+
 .thead,
 .tbody {
     border-bottom: 1px solid lightgray !important;
