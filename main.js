@@ -84,6 +84,7 @@ Parse.Cloud.define("reassign", async (request) => {
           var list = results[i].get('CustomHierarchy');
           officerID = results[i].get("AssignedTo");
           query2.equalTo("objectId",officerID);
+          var objID = results[i].id;
           query2.find().then((result) => {
             officerClass = result[0].get("officerClass");
             var index = list.indexOf(officerClass) + 1;
@@ -91,10 +92,10 @@ Parse.Cloud.define("reassign", async (request) => {
             if((index) == list.length){
               const Status = Parse.Object.extend("Status");
               const findFilesQuery = new Parse.Query(Status);
-              findFilesQuery.equalTo('objectId', results[i].id);
+              findFilesQuery.equalTo('objectId', objID);
               findFilesQuery.find().then((res)=>{
-                res.set('Action','end');
-                res.save().then(
+                res[0].set('Action','end');
+                res[0].save().then(
                     (save) => {
                         if(typeof document !== 'undefined')
                         console.log("Updated to Status", save);
