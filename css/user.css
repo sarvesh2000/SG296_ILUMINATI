@@ -9,3 +9,7 @@ input:focus {
     float: left;
     padding-right: 5px;
 }
+
+.user-card {
+    height: 80vh;
+}
