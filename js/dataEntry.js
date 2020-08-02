@@ -32,6 +32,64 @@ function generateFileNo(){
     localStorage.setItem('fileNo', fileNo);
         
 }
+
+async function customAssign(list){
+    const User = new Parse.User();
+    const query= new Parse.Query(User);
+    query.equalTo("officerClass",list[0]);
+    await query.find().then((users) => {
+        console.log(users);
+        var officerId;
+        const assign = Math.floor((Math.random() * users.length) + 1);
+        console.log("Assign ",assign);
+        if(assign != 1)
+            officerId=users[assign-1].id;
+        else
+            officerId = users[0].id;
+        console.log(officerId);
+
+        const Tracking = Parse.Object.extend('Tracking');
+        const track = new Tracking();
+        //store to Tracking DB
+        track.set('FileID', document.getElementById("fileID").value);
+        track.set('AssignedTo',officerId);
+        track.set('Timestamp',new Date());
+        track.set('Action',"created");
+        
+        track.save().then(
+            (result) => {
+                if(typeof document !=='undefined') 
+                //document.write(`Officers found: ${JSON.stringify(result)}`);
+                console.log('Success', result);
+            },
+            (error) => {
+                if(typeof document !== 'undefined')
+                console.error('Files not saved to Tracking', error);
+            }
+        );
+        const Status = Parse.Object.extend('Status');
+        const status = new Status();
+        status.set('FileID', document.getElementById("fileID").value);
+        status.set('AssignedTo',officerId);
+        status.set('Timestamp',new Date());
+        status.set('Action',"created");
+        status.set('AssignmentType', 'manual');
+        status.set('CustomHierarchy', list);
+        status.save().then(
+            (save) => {
+                if(typeof document !== 'undefined')
+                console.log("Saved to Status", save);
+                $("#save").addClass("disabled");
+                document.getElementById("save").setAttribute("disabled", true);
+            },
+            (error) => {
+                if(typeof document !== 'undefined')
+                console.log("Not Saved to Status",error);
+            }
+        );
+
+  });      
+}
 async function assign(flag = 0){
     const User = new Parse.User();
     const query= new Parse.Query(User);
@@ -99,6 +157,7 @@ async function assign(flag = 0){
     //   generateFileNo();
 }
 function dataEntry(){
+        var list = [];
         const Files = Parse.Object.extend('Files');
         const myNewObject = new Files();
         //stores data to DB
@@ -115,7 +174,6 @@ function dataEntry(){
         }
         if(document.getElementById("assignmentType").value == 'manual'){
             myNewObject.set('AssignmentType', 'manual');
-            var list = [];
             if($("#hierarchy1").val() != '')
                 list.push($("#hierarchy1").val());
             if($("#hierarchy2").val() != '')
@@ -129,7 +187,6 @@ function dataEntry(){
             myNewObject.set('CustomHierarchy', list);
         }else{
             myNewObject.set('AssignmentType', 'automatic');
-            var list = [];
             myNewObject.set('CustomHierarchy', list);
         }
     //QR Code Generation
@@ -154,7 +211,7 @@ function dataEntry(){
         else
             assign();   
       }else{
-
+            customAssign(list);
       }
 }
 
