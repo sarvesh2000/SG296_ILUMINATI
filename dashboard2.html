@@ -16,14 +16,14 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <!--Parse SDK-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/parse/2.9.1/parse.js"></script>
-  <!--Parse Init-->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/parse/2.9.1/parse.js"></script>
+  <!-- Parse Init -->
   <script src="js/parseInit.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script> 
   <!--Login Check Script-->
-  <!-- <script src="js/loginCheck.js"></script> -->
+  <script src="js/loginCheck.js"></script>
   <script>
     var currentUser = Parse.User.current();
     if (currentUser) {
@@ -50,7 +50,7 @@
   <!--Check count of jobs-->
   <script src="js/dashboard.js"></script>
   <!--Reassign jobs for higer officers-->
-  <!-- <script src="js/reassign.js"></script> -->
+  <script src="js/reassign.js"></script>
 
   <script>
     countNewlyAssignedJobs();
@@ -83,6 +83,12 @@
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <a class="nav-link text-white" href="table.html">Reassign Jobs <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link text-white" href="entry.html">Entry<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link text-white" href="prediction.html">Prediction<span class="sr-only">(current)</span></a>
         </li>
       </ul>
     </div>
