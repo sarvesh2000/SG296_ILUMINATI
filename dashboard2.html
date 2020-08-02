@@ -73,11 +73,16 @@
 </head>
 
 <body>
+
   <!--navbar-->
   <nav class="navbar navbar-expand-lg navbar-light" style="background: #352961;">
     <a class="navbar-brand text-white" href="dashboard.html"><i><img
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Seal_of_Sikkim.svg/1200px-Seal_of_Sikkim.svg.png"
           alt="Government of Sikkim Logo" class="logo"></i> Govt. of Sikkim</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
@@ -96,14 +101,14 @@
           <a class="nav-link text-white" href="file.html">Files<span class="sr-only">(current)</span></a>
         </li>
       </ul>
-    </div>
-
-    <div class="my-2 my-lg-0">
-      <a type="button" class="btn-sm logout-btn  text-white" onclick="logout()">
-        Log out
-      </a>
+      <div class="my-2 my-lg-0">
+        <a type="button" class="btn-sm logout-btn  text-white" onclick="logout()">
+          Log out
+        </a>
+      </div>
     </div>
   </nav>
+
   <!-- dashboard user msg -->
   <div class="container dashboard-container">
     <div class="user-msg pb-5">

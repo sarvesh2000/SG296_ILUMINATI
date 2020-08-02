@@ -33,7 +33,7 @@ input:focus {
 }
 
 .user-card {
-    height: 80vh;
+    height: 100%;
 }
 
 input {
