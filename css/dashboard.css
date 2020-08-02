@@ -19,6 +19,10 @@ body {
     height: 200px;
 }
 
+.card-dashboard:hover {
+    background-color: yellow;
+}
+
 .card-dashboard .card-body i {
     font-size: 20px;
     color: #352961;
