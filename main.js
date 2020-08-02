@@ -90,6 +90,7 @@ Parse.Cloud.define("reassign", async (request) => {
             var index = list.indexOf(officerClass) + 1;
             console.log("Index ", index);
             if((index) == list.length){
+              console.log("Reached end of custom");
               const Status = Parse.Object.extend("Status");
               const findFilesQuery = new Parse.Query(Status);
               findFilesQuery.equalTo('objectId', objID);
