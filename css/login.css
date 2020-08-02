@@ -44,6 +44,8 @@ li a:hover {
 
 .login-jumbotron .login-form {
   background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #000;
   padding: 30px;
   width: 40%;
   margin: 10% auto;
