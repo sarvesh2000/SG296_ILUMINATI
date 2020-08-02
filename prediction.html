@@ -102,8 +102,8 @@
     </div> -->
 	<div class="container">
 		<div class="row">
-			<input type='number' id='search-text-input'>
-			<button class="btn btn-default">Search</button>
+			<input type='date' id='search-text-input'>
+			<button class="btn btn-default" onclick="predict()">Search</button>
 		</div>
 	</div>
 
@@ -117,6 +117,21 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
 		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
 		crossorigin="anonymous"></script>
+	<script>
+		function predict() {
+			var input = document.getElementById('search-text-input').value;
+			var d = new Date(input);
+			var cd = new Date().getFullYear()
+			if (!!d.valueOf()) {
+				year = d.getFullYear();
+				if (year > cd) {
+					alert(year)
+				}
+				else
+					alert('invalid year! Enter Year Greater than ' + cd)
+			}
+		}
+	</script>
 </body>
 
 </html>
