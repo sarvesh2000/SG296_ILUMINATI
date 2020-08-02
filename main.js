@@ -1,6 +1,7 @@
 Parse.Cloud.define("jobDeadline", async (request) => {
   const query = new Parse.Query("Status");
   const query2 = new Parse.Query("User");
+  const query3 = new Parse.Query("User");
   console.log("Params ", request.params.status);
   query.equalTo("Action", request.params.status);
   const results = await query.find();
@@ -14,10 +15,15 @@ Parse.Cloud.define("jobDeadline", async (request) => {
         let officerID = results[i].get("AssignedTo");
         query2.equalTo("objectId", officerID);
         const officerContactNo = await query2.find();
+        query3.equalTo('officerClass','admin');
+        const adminContactNo = await query3.find();
         officerList = {
           OfficerID: officerID,
           FileID: results[i].get("FileID"),
-          PhoneNumber: officerContactNo[0].get("contactDetails")
+          PhoneNumber: officerContactNo[0].get("contactDetails"),
+          ContactNumber: officerContactNo[0].get('phoneNumber'),
+          adminContactNumber: adminContactNo[0].get('phoneNumber'),
+          adminPhoneNumber: adminContactNo[0].get('contactDetails')
         };
       }
     }
