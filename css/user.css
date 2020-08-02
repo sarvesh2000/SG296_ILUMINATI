@@ -35,3 +35,8 @@ input:focus {
 input {
     border: 1px solid lightgray;
 }
+
+.table-msg h3 {
+    font-size: 30px;
+    color: #352961;
+}
