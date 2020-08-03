@@ -15,37 +15,37 @@
    <!-- custom css -->
    <link rel="stylesheet" href="css/user.css">
    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-	crossorigin="anonymous"></script>
-	<!--Parse SDK-->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/parse/2.9.1/parse.js"></script>
-	<!-- Parse Init -->
-	<script src="js/parseInit.js"></script>
-	<!--Login Check Script-->
-	<script src="js/loginCheck.js"></script>
-	<script>
-	  var currentUser = Parse.User.current();
-	  if (currentUser) {
-		var userType = currentUser.get("officerClass");
-		$(document).ready(function () {
-		  var username = currentUser.getUsername();
-		  console.log("Username ", username);
-		  document.getElementById("user").innerHTML = username;
-		});
-		if (userType != "entry" && userType == "1") {
-		  console.log(userType);
-		} else {
-		  alert("You are not authorised to access this page");
-		  Parse.User.logOut();
-		  document.location.href = "login.html";
-		}
-	  } else {
-		alert("You are not logged in. Please Login to access");
-		document.location.href = "login.html";
-	  }
-	</script>
-	<!--Logout Script-->
-	<script src="js/logout.js"></script>
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"></script>
+   <!--Parse SDK-->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/parse/2.9.1/parse.js"></script>
+   <!-- Parse Init -->
+   <script src="js/parseInit.js"></script>
+   <!--Login Check Script-->
+   <script src="js/loginCheck.js"></script>
+   <script>
+      var currentUser = Parse.User.current();
+      if (currentUser) {
+         var userType = currentUser.get("officerClass");
+         $(document).ready(function () {
+            var username = currentUser.getUsername();
+            console.log("Username ", username);
+            document.getElementById("user").innerHTML = username;
+         });
+         if (userType != "entry" && userType == "1") {
+            console.log(userType);
+         } else {
+            alert("You are not authorised to access this page");
+            Parse.User.logOut();
+            document.location.href = "login.html";
+         }
+      } else {
+         alert("You are not logged in. Please Login to access");
+         document.location.href = "login.html";
+      }
+   </script>
+   <!--Logout Script-->
+   <script src="js/logout.js"></script>
 </head>
 
 <body>
@@ -101,7 +101,7 @@
                      <div class="row">
                         <div class="col">
                            <center>
-                              <h4 class="pt-3 pb-3">Member Details</h4>
+                              <h4 class="pt-3 pb-3">User Details</h4>
                            </center>
                         </div>
                      </div>
@@ -113,7 +113,7 @@
 
                      <div class="row pt-3 pb-3">
                         <div class="col-md-6 ">
-                           <label>Member ID</label>
+                           <label>Username</label>
                            <div class="form-group">
                               <div class="input-group">
                                  <input class="form-control" ID="txtMemberId" runat="server" placeholder="ID"></input>
@@ -123,7 +123,7 @@
                            </div>
                         </div>
                         <div class="col-md-6">
-                           <label> Name</label>
+                           <label>Officer Class</label>
                            <div class="form-group">
                               <input Class="form-control" ID="txtFullname" runat="server" placeholder="Name"></input>
                            </div>
@@ -175,7 +175,7 @@
 
 
                         <div class="col-md-4">
-                           <label>Chat Details</label>
+                           <label>Telegram User ID</label>
                            <div class="form-group">
                               <input Class="form-control" ID="txtFullAddress" runat="server" placeholder="Details"
                                  TextMode="MultiLine" Rows="2"></input>

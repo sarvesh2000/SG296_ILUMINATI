@@ -60,3 +60,7 @@ p {
   float: left;
   padding-right: 5px;
 }
+
+.btn {
+  color: white !important;
+}
