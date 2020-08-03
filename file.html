@@ -253,7 +253,8 @@
                                 </tbody>
                             </table>
                             <div class="text-right">
-                                <button type="submit" class="btn btn-primary mt-5">Download</button>
+                                <button type="submit" class="btn btn-primary mt-5"
+                                    onclick="download()">Download</button>
                             </div>
 
                         </div>
@@ -270,8 +271,19 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
+    <!-- JSPDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"
+        integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/"
+        crossorigin="anonymous"></script>
     <!-- Data tables js -->
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+    <script>
+        function download() {
+            var doc = new jsPDF()
+            doc.text('Hello world!', 10, 10)
+            doc.save('table.pdf')
+        }
+    </script>
 </body>
 
 </html>
