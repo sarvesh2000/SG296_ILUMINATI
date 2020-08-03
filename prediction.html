@@ -12,8 +12,8 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
 		integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-	crossorigin="anonymous"></script>
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
 	<!--Parse SDK-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/parse/2.9.1/parse.js"></script>
 	<!-- Parse Init -->
@@ -21,25 +21,25 @@
 	<!--Login Check Script-->
 	<script src="js/loginCheck.js"></script>
 	<script>
-	  var currentUser = Parse.User.current();
-	  if (currentUser) {
-		var userType = currentUser.get("officerClass");
-		$(document).ready(function () {
-		  var username = currentUser.getUsername();
-		  console.log("Username ", username);
-		  document.getElementById("user").innerHTML = username;
-		});
-		if (userType != "entry" && userType == "1") {
-		  console.log(userType);
+		var currentUser = Parse.User.current();
+		if (currentUser) {
+			var userType = currentUser.get("officerClass");
+			$(document).ready(function () {
+				var username = currentUser.getUsername();
+				console.log("Username ", username);
+				document.getElementById("user").innerHTML = username;
+			});
+			if (userType != "entry" && userType == "1") {
+				console.log(userType);
+			} else {
+				alert("You are not authorised to access this page");
+				Parse.User.logOut();
+				document.location.href = "login.html";
+			}
 		} else {
-		  alert("You are not authorised to access this page");
-		  Parse.User.logOut();
-		  document.location.href = "login.html";
+			alert("You are not logged in. Please Login to access");
+			document.location.href = "login.html";
 		}
-	  } else {
-		alert("You are not logged in. Please Login to access");
-		document.location.href = "login.html";
-	  }
 	</script>
 	<!--Logout Script-->
 	<script src="js/logout.js"></script>
@@ -65,10 +65,6 @@
 			padding-right: 5px;
 		}
 
-		.container {
-			margin-top: 40px;
-		}
-
 		#search-text-input {
 			margin-left: 10px;
 			width: 80%;
@@ -87,11 +83,17 @@
 		.btn:hover {
 			color: white !important;
 		}
+
+		.table-msg h3 {
+			font-size: 30px;
+			color: #352961;
+		}
 	</style>
 
 </head>
 
 <body>
+
 	<!--navbar-->
 	<nav class="navbar navbar-expand-lg navbar-light" style="background: #352961;">
 		<a class="navbar-brand text-white" href="dashboard.html"><i><img
@@ -128,6 +130,14 @@
 			</div>
 		</div>
 	</nav>
+
+	<!-- table msg -->
+	<div class="table-msg text-left container pt-5 pb-2">
+		<h3> <i class="fas fa-coins pr-1"></i> Prediction </h3>
+		<p class="pt-2 text-muted">Use this for predicting files </p>
+	</div>
+
+
 	<!--    <div class="container" id="year_validation">
     	<input type="number" name="yourId">
     	
