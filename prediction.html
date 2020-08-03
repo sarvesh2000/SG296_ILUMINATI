@@ -144,7 +144,7 @@
     </div> -->
 	<div class="container">
 		<div class="row">
-			<input type='date' id='search-text-input'>
+			<input type='number' id='search-text-input'>
 			<button class="btn btn-default" onclick="predict()">Search</button>
 		</div>
 	</div>
@@ -159,10 +159,10 @@
 	<script>
 		function predict() {
 			var input = document.getElementById('search-text-input').value;
-			var d = new Date(input);
+			var d = parseInt(input)
 			var cd = new Date().getFullYear()
 			if (!!d.valueOf()) {
-				year = d.getFullYear();
+				year = d
 				if (year > cd) {
 					alert(year)
 				}
