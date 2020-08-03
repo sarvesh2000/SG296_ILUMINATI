@@ -17,22 +17,22 @@
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <!--Parse SDK-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/parse/2.9.1/parse.js"></script>
-  <!--Parse Init-->
+  <!-- Parse Init -->
   <script src="js/parseInit.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
     crossorigin="anonymous"></script>
   <!--Login Check Script-->
-  <!-- <script src="js/loginCheck.js"></script> -->
+  <script src="js/loginCheck.js"></script>
   <script>
     var currentUser = Parse.User.current();
     if (currentUser) {
       var userType = currentUser.get("officerClass");
-      $(document).ready(function(){
-      var username = currentUser.getUsername();
-      console.log("Username ", username);
-      document.getElementById("user").innerHTML = username;
-    });
+      $(document).ready(function () {
+        var username = currentUser.getUsername();
+        console.log("Username ", username);
+        document.getElementById("user").innerHTML = username;
+      });
       if (userType != "entry" && userType == "1") {
         console.log(userType);
       } else {
@@ -50,7 +50,7 @@
   <!--Check count of jobs-->
   <script src="js/dashboard.js"></script>
   <!--Reassign jobs for higer officers-->
-  <!-- <script src="js/reassign.js"></script> -->
+  <script src="js/reassign.js"></script>
 
   <script>
     countNewlyAssignedJobs();
@@ -73,26 +73,42 @@
 </head>
 
 <body>
+
   <!--navbar-->
   <nav class="navbar navbar-expand-lg navbar-light" style="background: #352961;">
     <a class="navbar-brand text-white" href="dashboard.html"><i><img
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Seal_of_Sikkim.svg/1200px-Seal_of_Sikkim.svg.png"
           alt="Government of Sikkim Logo" class="logo"></i> Govt. of Sikkim</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
+        <li class="nav-item">
           <a class="nav-link text-white" href="table.html">Reassign Jobs <span class="sr-only">(current)</span></a>
         </li>
+        <li class="nav-item ">
+          <a class="nav-link text-white" href="user.html">Users <span class="sr-only">(current)</span></a>
+        <li class="nav-item ">
+          <a class="nav-link text-white" href="entry.html">Entry<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="prediction.html">Prediction<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="file.html">Files<span class="sr-only">(current)</span></a>
+        </li>
       </ul>
-    </div>
-
-    <div class="my-2 my-lg-0">
-      <a type="button" class="btn-sm logout-btn  text-white" onclick="logout()">
-        Log out
-      </a>
+      <div class="my-2 my-lg-0">
+        <a type="button" class="btn-sm logout-btn  text-white" onclick="logout()">
+          Log out
+        </a>
+      </div>
     </div>
   </nav>
+
   <!-- dashboard user msg -->
   <div class="container dashboard-container">
     <div class="user-msg pb-5">

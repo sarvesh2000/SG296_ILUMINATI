@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Member Management</title>
+   <!-- google fonts -->
+   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+   <!-- font awesome -->
+   <link rel="stylesheet" href="./css/fontawesome.css">
+   <!-- Data Tables -->
+   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+   <!--bootstrap css-->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+   <!-- custom css -->
+   <link rel="stylesheet" href="css/user.css">
+</head>
+
+<body>
+
+   <!--navbar-->
+   <nav class="navbar navbar-expand-lg navbar-light" style="background: #352961;">
+      <a class="navbar-brand text-white" href="dashboard.html"><i><img
+               src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Seal_of_Sikkim.svg/1200px-Seal_of_Sikkim.svg.png"
+               alt="Government of Sikkim Logo" class="logo"></i> Govt. of Sikkim</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+         <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+               <a class="nav-link text-white" href="table.html">Reassign Jobs <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item ">
+               <a class="nav-link text-white" href="user.html">Users <span class="sr-only">(current)</span></a>
+            <li class="nav-item ">
+               <a class="nav-link text-white" href="entry.html">Entry<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link text-white" href="prediction.html">Prediction<span
+                     class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link text-white" href="file.html">Files<span class="sr-only">(current)</span></a>
+            </li>
+         </ul>
+         <div class="my-2 my-lg-0">
+            <a type="button" class="btn-sm logout-btn  text-white" onclick="logout()">
+               Log out
+            </a>
+         </div>
+      </div>
+   </nav>
+
+   <!-- table msg -->
+   <div class="table-msg text-left container pt-5 pb-2">
+      <h3> <i class="fas fa-user pr-1"></i> Users</h3>
+      <p class="pt-2 text-muted">View this table for User Details</p>
+   </div>
+
+   <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+      <div class="container-fluid">
+         <div class="row">
+            <div class="col-md-6">
+               <div class="card shadow-lg p-3 mb-5 bg-white rounded user-card">
+                  <div class="card-body">
+                     <div class="row">
+                        <div class="col">
+                           <center>
+                              <h4 class="pt-3 pb-3">Member Details</h4>
+                           </center>
+                        </div>
+                     </div>
+                     <!--div class="row">
+                     <div class="col">
+                        <hr>
+                     </div>
+                  </div-->
+
+                     <div class="row pt-3 pb-3">
+                        <div class="col-md-6 ">
+                           <label>Member ID</label>
+                           <div class="form-group">
+                              <div class="input-group">
+                                 <input class="form-control" ID="txtMemberId" runat="server" placeholder="ID"></input>
+                                 <button class="btn btn-primary" ID="LnkBtnGo" runat="server"
+                                    OnClick="LnkBtnGo_Click"><i class="fas fa-check-circle"></i></button>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                           <label> Name</label>
+                           <div class="form-group">
+                              <input Class="form-control" ID="txtFullname" runat="server" placeholder="Name"></input>
+                           </div>
+                        </div>
+                     </div>
+
+                     <div class="row pt-3 pb-3">
+                        <div class="col-md-6">
+                           <label>Account Status</label>
+                           <div class="form-group">
+                              <div class="input-group">
+                                 <input Class="form-control mr-1" ID="txtAcntStatus" runat="server"
+                                    placeholder="Status"></input>
+                                 <button class="btn btn-success mr-1" ID="lbkBtnActive" runat="server"
+                                    OnClick="lbkBtnActive_Click"><i class="fas fa-check-circle"></i></button>
+                                 <!-- <asp:LinkButton class="btn btn-warning mr-1" ID="lnkBtnPending" runat="server"
+                                    OnClick="lnkBtnPending_Click"><i class="far fa-pause-circle"></i></asp:LinkButton> -->
+                                 <asp:LinkButton class="btn btn-danger mr-1" ID="lnkBtnDeactive" runat="server"
+                                    OnClick="lnkBtnDeactive_Click"><i class="fas fa-times-circle"></i></asp:LinkButton>
+                              </div>
+                           </div>
+                        </div>
+
+
+                        <div class="col-md-6">
+                           <label>Password</label>
+                           <div class="form-group">
+                              <input Class="form-control" ID="txtContactNo" runat="server"
+                                 placeholder="Password"></input>
+                           </div>
+                        </div>
+                     </div>
+
+                     <div class="row pt-3 pb-3">
+                        <div class="col-md-4">
+                           <label>Phone No</label>
+                           <div class="form-group">
+                              <input Class="form-control" ID="txtContactNo" runat="server" placeholder="number"></input>
+                           </div>
+                        </div>
+
+                        <div class="col-md-4">
+                           <label>Email</label>
+                           <div class="form-group">
+                              <input Class="form-control" ID="txtEmail" runat="server" placeholder="Email"></input>
+                           </div>
+                        </div>
+
+
+
+                        <div class="col-md-4">
+                           <label>Chat Details</label>
+                           <div class="form-group">
+                              <input Class="form-control" ID="txtFullAddress" runat="server" placeholder="Details"
+                                 TextMode="MultiLine" Rows="2"></input>
+                           </div>
+                        </div>
+                     </div>
+
+                     <div class="row pt-3 pb-3">
+                        <div class="col-4">
+                           <button ID="btnInsert" class="btn btn-lg btn-block btn-success"
+                              runat="server" />Insert</button>
+                        </div>
+                        <div class="col-4">
+                           <button ID="btnDelete" class="btn btn-lg btn-block btn-danger"
+                              runat="server" />Delete</button>
+                        </div>
+                        <div class="col-4">
+                           <button ID="btnUpdate" class="btn btn-lg btn-block btn-warning"
+                              runat="server" />Update</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <br>
+               <!-- <a href="homepage.aspx">
+                  << Back to Home</a> -->
+            </div>
+            <div class="col-md-6">
+               <div class="card shadow-lg p-3 mb-5 bg-white rounded user-card">
+                  <div class="card-body">
+                     <div class="row">
+                        <div class="col">
+                           <center>
+                              <h4>Member List</h4>
+                           </center>
+                        </div>
+                     </div>
+                     <!-- data table -->
+
+                     <table id="myTable" class="table table-responsive-lg table-striped table-bordered" border="1">
+                        <thead>
+                           <tr>
+                              <th>S.No</th>
+                              <th>1</th>
+                              <th>2</th>
+                              <th>3</th>
+                              <th>4</th>
+                              <th>5</th>
+                              <th>6</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr>
+                              <td>1</td>
+                              <td>hello</td>
+                              <td>hello</td>
+                              <td>hello</td>
+                              <td>hello</td>
+                              <td>hello</td>
+                              <td>hello</td>
+                           </tr>
+                           <tr>
+                              <td>2</td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td>3</td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td>4</td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td>5</td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td>6</td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td>7</td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td>8</td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td>9</td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td>10</td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </asp:Content>
+
+   <!-- Bootstrap js -->
+   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"></script>
+   <!-- Data tables js -->
+   <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+   <script>
+      $(document).ready(function ($) {
+         // $.noConflict();
+         $('#myTable').DataTable();
+      });
+   </script>
+</body>
+
+</html>
