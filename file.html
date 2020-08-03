@@ -1,97 +1,55 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Google fonts -->
+    <title>Member Management</title>
+    <!-- google fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <!-- font awesome -->
     <link rel="stylesheet" href="./css/fontawesome.css">
-    <!-- Bootstap css -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <!-- Data Tables -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
-    <!-- Bootstap css -->
+    <!--bootstrap css-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!-- custom css -->
+    <link rel="stylesheet" href="css/user.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"></script>
-	<!--Parse SDK-->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/parse/2.9.1/parse.js"></script>
-	<!-- Parse Init -->
-	<script src="js/parseInit.js"></script>
-	<!--Login Check Script-->
-	<script src="js/loginCheck.js"></script>
-	<script>
-	  var currentUser = Parse.User.current();
-	  if (currentUser) {
-		var userType = currentUser.get("officerClass");
-		$(document).ready(function () {
-		  var username = currentUser.getUsername();
-		  console.log("Username ", username);
-		  document.getElementById("user").innerHTML = username;
-		});
-		if (userType != "entry" && userType == "1") {
-		  console.log(userType);
-		} else {
-		  alert("You are not authorised to access this page");
-		  Parse.User.logOut();
-		  document.location.href = "login.html";
-		}
-	  } else {
-		alert("You are not logged in. Please Login to access");
-		document.location.href = "login.html";
-	  }
-	</script>
-	<!--Logout Script-->
-	<script src="js/logout.js"></script>
-
-
-    <title>Data Table</title>
-    <style>
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            font-family: 'Montserrat', sans-serif;
-            background-color: #F8F9FB;
-            background-color: #FEFEFE;
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <!--Parse SDK-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parse/2.9.1/parse.js"></script>
+    <!-- Parse Init -->
+    <script src="js/parseInit.js"></script>
+    <!--Login Check Script-->
+    <script src="js/loginCheck.js"></script>
+    <script>
+        var currentUser = Parse.User.current();
+        if (currentUser) {
+            var userType = currentUser.get("officerClass");
+            $(document).ready(function () {
+                var username = currentUser.getUsername();
+                console.log("Username ", username);
+                document.getElementById("user").innerHTML = username;
+            });
+            if (userType != "entry" && userType == "1") {
+                console.log(userType);
+            } else {
+                alert("You are not authorised to access this page");
+                Parse.User.logOut();
+                document.location.href = "login.html";
+            }
+        } else {
+            alert("You are not logged in. Please Login to access");
+            document.location.href = "login.html";
         }
-
-        .logo {
-            height: 25px;
-            width: 25px;
-            float: left;
-            padding-right: 5px;
-        }
-
-        input {
-            border: 1px solid lightgray;
-        }
-
-        .table {
-            color: gray;
-        }
-
-        .thead,
-        .tbody {
-            border-bottom: 1px solid lightgray !important;
-        }
-
-        .table-msg h3 {
-            font-size: 30px;
-            color: #352961;
-        }
-    </style>
+    </script>
+    <!--Logout Script-->
+    <script src="js/logout.js"></script>
 </head>
 
 <body>
+
     <!--navbar-->
     <nav class="navbar navbar-expand-lg navbar-light" style="background: #352961;">
         <a class="navbar-brand text-white" href="dashboard.html"><i><img
@@ -134,119 +92,249 @@
         <h3> <i class="fas fa-file-invoice pr-1"></i> Files</h3>
         <p class="pt-2 text-muted">View this table for File Details</p>
     </div>
-    <!-- data table -->
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <table border="1" id="myTable"
-                    class="display table table-responsive-lg shadow-lg p-3 mb-5 bg-white rounded  table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th>S.No</th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>hello</td>
-                            <td>hello</td>
-                            <td>hello</td>
-                            <td>hello</td>
-                            <td>hello</td>
-                            <td>hello</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>8</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>9</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>10</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
+
+    <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card shadow-lg p-3 mb-5 bg-white rounded user-card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <center>
+                                        <h4 class="pt-3 pb-3">Member Details</h4>
+                                    </center>
+                                </div>
+                            </div>
+                            <!--div class="row">
+                     <div class="col">
+                        <hr>
+                     </div>
+                  </div-->
+
+                            <div class="row pt-3 pb-3">
+                                <div class="col-md-6 ">
+                                    <label>Member ID</label>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input class="form-control" ID="txtMemberId" runat="server"
+                                                placeholder="ID"></input>
+                                            <button class="btn btn-primary" ID="LnkBtnGo" runat="server"
+                                                OnClick="LnkBtnGo_Click"><i class="fas fa-check-circle"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label> Name</label>
+                                    <div class="form-group">
+                                        <input Class="form-control" ID="txtFullname" runat="server"
+                                            placeholder="Name"></input>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row pt-3 pb-3">
+                                <div class="col-md-6">
+                                    <label>Account Status</label>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input Class="form-control mr-1" ID="txtAcntStatus" runat="server"
+                                                placeholder="Status"></input>
+                                            <button class="btn btn-success mr-1" ID="lbkBtnActive" runat="server"
+                                                OnClick="lbkBtnActive_Click"><i
+                                                    class="fas fa-check-circle"></i></button>
+                                            <!-- <asp:LinkButton class="btn btn-warning mr-1" ID="lnkBtnPending" runat="server"
+                                    OnClick="lnkBtnPending_Click"><i class="far fa-pause-circle"></i></asp:LinkButton> -->
+                                            <asp:LinkButton class="btn btn-danger mr-1" ID="lnkBtnDeactive"
+                                                runat="server" OnClick="lnkBtnDeactive_Click"><i
+                                                    class="fas fa-times-circle"></i></asp:LinkButton>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-6">
+                                    <label>Password</label>
+                                    <div class="form-group">
+                                        <input Class="form-control" ID="txtContactNo" runat="server"
+                                            placeholder="Password"></input>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row pt-3 pb-3">
+                                <div class="col-md-4">
+                                    <label>Phone No</label>
+                                    <div class="form-group">
+                                        <input Class="form-control" ID="txtContactNo" runat="server"
+                                            placeholder="number"></input>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label>Email</label>
+                                    <div class="form-group">
+                                        <input Class="form-control" ID="txtEmail" runat="server"
+                                            placeholder="Email"></input>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="col-md-4">
+                                    <label>Chat Details</label>
+                                    <div class="form-group">
+                                        <input Class="form-control" ID="txtFullAddress" runat="server"
+                                            placeholder="Details" TextMode="MultiLine" Rows="2"></input>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row pt-3 pb-3">
+                                <div class="col-4">
+                                    <button ID="btnInsert" class="btn btn-lg btn-block btn-success"
+                                        runat="server" />Insert</button>
+                                </div>
+                                <div class="col-4">
+                                    <button ID="btnDelete" class="btn btn-lg btn-block btn-danger"
+                                        runat="server" />Delete</button>
+                                </div>
+                                <div class="col-4">
+                                    <button ID="btnUpdate" class="btn btn-lg btn-block btn-warning"
+                                        runat="server" />Update</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- <a href="homepage.aspx">
+                  << Back to Home</a> -->
+                </div>
+                <div class="col-md-6">
+                    <div class="card shadow-lg p-3 mb-5 bg-white rounded user-card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <center>
+                                        <h4>Member List</h4>
+                                    </center>
+                                </div>
+                            </div>
+                            <!-- data table -->
+
+                            <table id="myTable" class="table table-responsive-lg table-striped table-bordered"
+                                border="1">
+                                <thead>
+                                    <tr>
+                                        <th>S.No</th>
+                                        <th>1</th>
+                                        <th>2</th>
+                                        <th>3</th>
+                                        <th>4</th>
+                                        <th>5</th>
+                                        <th>6</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>hello</td>
+                                        <td>hello</td>
+                                        <td>hello</td>
+                                        <td>hello</td>
+                                        <td>hello</td>
+                                        <td>hello</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>8</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>9</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>10</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </asp:Content>
+
     <!-- Bootstrap js -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
