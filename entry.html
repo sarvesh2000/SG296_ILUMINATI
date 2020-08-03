@@ -27,6 +27,22 @@
   <script src="js/parseInit.js"></script>
   <!--Check whether logged in-->
   <!-- <script src="js/loginCheckEntry.js"></script> -->
+  <script>
+    var currentUser = Parse.User.current();
+    if (currentUser) {
+      var userType = currentUser.get("officerClass");
+      if (userType == "admin") {
+        console.log(userType);
+      } else {
+        alert("You are not authorised to access this page");
+        Parse.User.logOut();
+        document.location.href = "login.html";
+      }
+    } else {
+      alert("You are not logged in. Please Login to access");
+      document.location.href = "login.html";
+    }
+  </script>
   <!--JS to save data to DB-->
   <script src="js/dataEntry.js"></script>
   <!--Logout Script-->
