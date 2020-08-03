@@ -27,7 +27,7 @@
     var currentUser = Parse.User.current();
     if (currentUser) {
       var userType = currentUser.get("officerClass");
-      if (userType != "entry" && userType == "1") {
+      if (userType == "admin") {
         console.log(userType);
       } else {
         alert("You are not authorised to access this page");

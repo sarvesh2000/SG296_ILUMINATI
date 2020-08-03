@@ -38,11 +38,10 @@
           if (typeof document !== "undefined") {
             currentUser = Parse.User.current().get("officerClass");
             console.log(currentUser);
-            if (currentUser == "entry") {
-              document.location.href = "entry.html";
-            } else if (currentUser == "1") {
+            if (currentUser == "admin") {
               document.location.href = "dashboard2.html";
-            } else {
+            }
+            else {
               document.location.href = "dashboard.html";
             }
           }
