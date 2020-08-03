@@ -46,6 +46,8 @@
     </script>
     <!--Logout Script-->
     <script src="js/logout.js"></script>
+    <!-- Script to load file deatils in table -->
+    <script src="js/loadFiles.js"></script>
 </head>
 
 <body>
@@ -226,106 +228,18 @@
                                 border="1">
                                 <thead>
                                     <tr>
-                                        <th>S.No</th>
-                                        <th>1</th>
-                                        <th>2</th>
-                                        <th>3</th>
-                                        <th>4</th>
-                                        <th>5</th>
-                                        <th>6</th>
+                                        <th>File ID</th>
+                                        <th>Name</th>
+                                        <th>Priority</th>
+                                        <th>Address</th>
+                                        <th>Problem Description</th>
+                                        <th>Category</th>
+                                        <th>Assignment Type</th>
+                                        <th>Custom Hierarchy</th>
+                                        <th>Delivery Date</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>hello</td>
-                                        <td>hello</td>
-                                        <td>hello</td>
-                                        <td>hello</td>
-                                        <td>hello</td>
-                                        <td>hello</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>6</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>7</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>8</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>9</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>10</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
+                                <tbody id="myContent">
                                 </tbody>
                             </table>
                         </div>
@@ -344,12 +258,6 @@
         crossorigin="anonymous"></script>
     <!-- Data tables js -->
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
-    <script>
-        $(document).ready(function ($) {
-            // $.noConflict();
-            $('#myTable').DataTable();
-        });
-    </script>
 </body>
 
 </html>
