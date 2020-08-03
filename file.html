@@ -255,7 +255,8 @@
                                 </tbody>
                             </table>
                             <div class="text-right">
-                                <button type="submit" class="btn btn-primary mt-5">Download</button>
+                                <button type="submit" class="btn btn-primary mt-5"
+                                    onclick="downloadfile()">Download</button>
                             </div>
 
                         </div>
@@ -272,8 +273,22 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
+    <!-- JSPDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"
+        integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/"
+        crossorigin="anonymous"></script>
+    <script src=" https://unpkg.com/jspdf">
+    </script>
+    <script src=" https://unpkg.com/jspdf-autotable"></script>
     <!-- Data tables js -->
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+    <script>
+        function downloadfile() {
+            var doc = new jsPDF()
+            doc.autoTable({ html: '#myTable' })
+            doc.save('file-table.pdf')
+        }
+    </script>
 </body>
 
 </html>
